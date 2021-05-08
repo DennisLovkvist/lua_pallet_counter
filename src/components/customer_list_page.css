@@ -1,0 +1,96 @@
+:root {
+
+    --color-button-primary: #3f8127;
+    --color-button-secondary: #4b922f;
+    --color-primary: #2e6c9e;
+    --color-secondary: #367bb4;
+    --color-text-light: #FFFFFF;
+  }
+  .customer_page_search_bar button{
+
+    background-color:var(--color-button-primary);
+    border: none;
+    color: var(--color-text-light);
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px; 
+    font-weight: bold;   
+    height: 48px;
+    width:30%;
+    vertical-align: middle;
+  }
+  .customer_page_search_bar input{
+
+    
+    font-size: 18px; 
+    width:70%;
+  }
+
+  .customer_list_item_even div{
+   background-color:var(--color-primary);
+   height: 48px;
+   width: 100%;
+   padding-top: 0px;
+   padding-bottom: 0px;
+  }
+  .customer_list_item_even h1{
+      
+    vertical-align: middle;
+    display: inline;
+    font-size: 18px; 
+    color: var(--color-text-light);
+    font-weight: normal;
+    width:70%;
+    
+    float: left;
+  }
+.customer_list_item_even button{
+
+    background-color:var(--color-button-primary);
+    border: none;
+    color: var(--color-text-light);
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px; 
+    font-weight: bold;   
+    height: 48px;
+    width:30%;
+    vertical-align: middle;
+    display: inline;
+    float: right;
+  }
+
+
+  .customer_list_item_odd div{
+    background-color:var(--color-secondary);
+    height: 48px;
+    width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+   }
+   .customer_list_item_odd h1{
+       
+     vertical-align: middle;
+     display: inline;
+     font-size: 18px; 
+     color: var(--color-text-light);
+     font-weight: normal;
+     width:70%;
+     
+     float: left;
+   }
+ .customer_list_item_odd button{
+ 
+     background-color:var(--color-button-secondary);
+     border: none;
+     color: var(--color-text-light);
+     text-align: center;
+     text-decoration: none;
+     font-size: 18px; 
+     font-weight: bold;   
+     height: 48px;
+     width:30%;
+     vertical-align: middle;
+     display: inline;
+     float: right;
+   }
