@@ -28,7 +28,7 @@ console.log(process.env);
             });
 
         var url_date_string = Common.GetCurrentURLDateString();
-
+        
         fetch('http://' + process.env.REACT_APP_WEB_SERVER_IP + ':8081/GetCountingControlByDateAndStatus/' + url_date_string + '/3')
             .then(res => res.json())
             .then(json => {

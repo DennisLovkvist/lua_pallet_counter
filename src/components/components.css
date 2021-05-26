@@ -32,8 +32,14 @@
     --color-count-list-item-global-hover: #474747;
     --color-count-list-item-global-active: #8f8f8f;
 
-
+    --button-width: 32px;
+    --button-height: 32px;
+    --title-size: x-large;
     --color-text-light: #FFFFFF;
+  }
+ .lol {
+    width:100%;
+    height: 70px;
   }
   .lol button{
 
@@ -46,23 +52,31 @@
     text-decoration: none;
     font-size: 16px; 
     font-weight: bold;   
-    height: 63px;
+    height: 70px;
     width:33.33%;
     display: inline-block;
 
   }  
   .lol h4{
-    
-    width:5%;
-    vertical-align: middle;
     display: inline-block;
+    height: 70px;
+    position: absolute;
+    
+    margin-left: 12px;
+    margin-top: -2px;
+  } 
+  .lol p{
+    display: inline-block;
+    height: 70px;
+    position: absolute;
+    margin-left: 12px;
   }  
   .lol h3{
-
-    width:50%;
-    vertical-align: middle; 
+    font-size: 32px;
     display: inline-block;
-    margin-left: 10px;
+    height: 70px;
+    position: absolute;
+    margin-left: 12px;
   } 
   .count-footer button{
 
@@ -213,63 +227,39 @@
   
 
   .count-list-item-dry-even{
-      background-color: var(--color-primary-dry);
+    background-color: var(--color-primary-dry);
     float: right;
     width:100%;
-    padding-top: 32px;
+    padding-top: 10px;
+    padding-bottom: 2px;
   }
-  .count-list-item-dry-odd{
-    background-color: var(--color-secondary-dry);
-  float: right;
-  width:100%;
-  padding-top: 32px;
-}
   .count-list-item-dry-even h1{
-
+    font-size: var(--title-size);
     display: inline;
-    color:var(--color-text-light);
-  }
-  .count-list-item-dry-odd h1{
-
-    display: inline;
-    color:var(--color-text-light);
+    color:var(--color-text-light);   
   }
   .count-list-item-dry-even button{
     background-color: var(--color-button-dry);
     border: none;
     color: white;
-    margin-top: -16px;
+    margin-top: 0px;
     padding: 0px 0px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;    
-    height: 64px;
-    width:64px;
+    height: var(--button-height);
+    width:var(--button-width);
     display: inline;
     float: right;
   }  
-  .count-list-item-dry-odd button{
-    background-color: var(--color-button-dry);
-    border: none;
-    color: white;
-    margin-top: -16px;
-    padding: 0px 0px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;    
-    height: 64px;
-    width:64px;
-    display: inline;
-    float: right;
-  } 
   .count-list-item-dry-even input[type=tel]{
     padding: 0;
-    height: 64px;
-    width:64px;
+    height: var(--button-height);
+    width:var(--button-width);
     position: relative;
-    text-align: center;
-    margin-top: -16px;
-    margin-bottom: 16px;
+    text-align: center;    
+    margin-top: 0px;
+    margin-bottom: 6px;
     left: 0;
     outline: none;
     border: 0px;
@@ -279,23 +269,6 @@
     display: inline;
     float: right;
   }  
-  .count-list-item-dry-odd input[type=tel]{
-    padding: 0;
-    height: 64px;
-    width:64px;
-    position: relative;
-    text-align: center;
-    margin-top: -16px;
-    margin-bottom: 16px;
-    left: 0;
-    outline: none;
-    border: 0px;  
-    border-color: rgba(0, 0, 0, .50);
-    background-color: white;
-    font-size: 16px;
-    display: inline;
-    float: right;
-  } 
 
   .count-list-item-dry-even button:hover{
 
@@ -367,290 +340,139 @@
 
 
 
- .count-list-item-cold-even{
+  .count-list-item-cold-even{
     background-color: var(--color-primary-cold);
-  float: right;
-  width:100%;
-  padding-top: 32px;
-}
-.count-list-item-cold-odd{
-  background-color: var(--color-secondary-cold);
-float: right;
-width:100%;
-padding-top: 32px;
-}
-.count-list-item-cold-even h1{
-
-  display: inline;
-  color:var(--color-text-light);
-}
-.count-list-item-cold-odd h1{
-
-  display: inline;
-  color:var(--color-text-light);
-}
-.count-list-item-cold-even button{
-  background-color: var(--color-button-cold);
-  border: none;
-  color: white;
-  margin-top: -16px;
-  padding: 0px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;    
-  height: 64px;
-  width:64px;
-  display: inline;
-  float: right;
-}  
-.count-list-item-cold-odd button{
-  background-color: var(--color-button-cold);
-  border: none;
-  color: white;
-  margin-top: -16px;
-  padding: 0px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;    
-  height: 64px;
-  width:64px;
-  display: inline;
-  float: right;
-} 
-.count-list-item-cold-even input[type=tel]{
-  padding: 0;
-  height: 64px;
-  width:64px;
-  position: relative;
-  text-align: center;
-  margin-top: -16px;
-  margin-bottom: 16px;
-  left: 0;
-  outline: none;
-  border: 0px;
-  border-color: rgba(0, 0, 0, .50);
-  background-color: white;
-  font-size: 16px;
-  display: inline;
-  float: right;
-}  
-.count-list-item-cold-odd input[type=tel]{
-  padding: 0;
-  height: 64px;
-  width:64px;
-  position: relative;
-  text-align: center;
-  margin-top: -16px;
-  margin-bottom: 16px;
-  left: 0;
-  outline: none;
-  border: 0px;
-  border-color: rgba(0, 0, 0, .50);
-  background-color: white;
-  font-size: 16px;
-  display: inline;
-  float: right;
-} 
+    float: right;
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 2px;
+  }
+  .count-list-item-cold-even h1{
+    font-size: var(--title-size);
+    display: inline;
+    color:var(--color-text-light);   
+  }
+  .count-list-item-cold-even button{
+    background-color: var(--color-button-cold);
+    border: none;
+    color: white;
+    margin-top: 0px;
+    padding: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;    
+    height: var(--button-height);
+    width:var(--button-width);
+    display: inline;
+    float: right;
+  }  
+  .count-list-item-cold-even input[type=tel]{
+    padding: 0;
+    height: var(--button-height);
+    width:var(--button-width);
+    position: relative;
+    text-align: center;    
+    margin-top: 0px;
+    margin-bottom: 6px;
+    left: 0;
+    outline: none;
+    border: 0px;
+    border-color: rgba(0, 0, 0, .50);
+    background-color: white;
+    font-size: 16px;
+    display: inline;
+    float: right;
+  }  
 
 
 
 
-  
 
-
-
-
-.count-list-item-frozen-even{
+  .count-list-item-frozen-even{
     background-color: var(--color-primary-frozen);
-  float: right;
-  width:100%;
-  padding-top: 32px;
-}
-.count-list-item-frozen-odd{
-  background-color: var(--color-secondary-frozen);
-float: right;
-width:100%;
-padding-top: 32px;
-}
-.count-list-item-frozen-even h1{
-
-  display: inline;
-  color:var(--color-text-light);
-}
-.count-list-item-frozen-odd h1{
-
-  display: inline;
-  color:var(--color-text-light);
-}
-.count-list-item-frozen-even button{
-  background-color: var(--color-button-frozen);
-  border: none;
-  color: white;
-  margin-top: -16px;
-  padding: 0px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;    
-  height: 64px;
-  width:64px;
-  display: inline;
-  float: right;
-}  
-.count-list-item-frozen-odd button{
-  background-color: var(--color-button-frozen);
-  border: none;
-  color: white;
-  margin-top: -16px;
-  padding: 0px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;    
-  height: 64px;
-  width:64px;
-  display: inline;
-  float: right;
-} 
-.count-list-item-frozen-even input[type=tel]{
-  padding: 0;
-  height: 64px;
-  width:64px;
-  position: relative;
-  text-align: center;
-  margin-top: -16px;
-  margin-bottom: 16px;
-  left: 0;
-  outline: none;
-  border: 0px;
-
-  border-color: rgba(0, 0, 0, .50);
-  background-color: white;
-  font-size: 16px;
-  display: inline;
-  float: right;
-}  
-.count-list-item-frozen-odd input[type=tel]{
-  padding: 0;
-  height: 64px;
-  width:64px;
-  position: relative;
-  text-align: center;
-  margin-top: -16px;
-  margin-bottom: 16px;
-  left: 0;
-  outline: none;
-  border: 0px;
-
-  border-color: rgba(0, 0, 0, .50);
-  background-color: white;
-  font-size: 16px;
-  display: inline;
-  float: right;
-} 
+    float: right;
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 2px;
+  }
+  .count-list-item-frozen-even h1{
+    font-size: var(--title-size);
+    display: inline;
+    color:var(--color-text-light);   
+  }
+  .count-list-item-frozen-even button{
+    background-color: var(--color-button-frozen);
+    border: none;
+    color: white;
+    margin-top: 0px;
+    padding: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;    
+    height: var(--button-height);
+    width:var(--button-width);
+    display: inline;
+    float: right;
+  }  
+  .count-list-item-frozen-even input[type=tel]{
+    padding: 0;
+    height: var(--button-height);
+    width:var(--button-width);
+    position: relative;
+    text-align: center;    
+    margin-top: 0px;
+    margin-bottom: 6px;
+    left: 0;
+    outline: none;
+    border: 0px;
+    border-color: rgba(0, 0, 0, .50);
+    background-color: white;
+    font-size: 16px;
+    display: inline;
+    float: right;
+  }  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.count-list-item-global-even{
+  .count-list-item-global-even{
     background-color: var(--color-primary-global);
-  float: right;
-  width:100%;
-  padding-top: 32px;
-}
-.count-list-item-global-odd{
-  background-color: var(--color-secondary-global);
-float: right;
-width:100%;
-padding-top: 32px;
-}
-.count-list-item-global-even h1{
-
-  display: inline;
-  color:var(--color-text-light);
-}
-.count-list-item-global-odd h1{
-
-  display: inline;
-  color:var(--color-text-light);
-}
-.count-list-item-global-even button{
-  background-color:var(--color-button-global);
-  border: none;
-  color: white;
-  margin-top: -16px;
-  padding: 0px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;    
-  height: 64px;
-  width:64px;
-  display: inline;
-  float: right;
-}  
-.count-list-item-global-odd button{
-  background-color: var(--color-button-global);
-  border: none;
-  color: white;
-  margin-top: -16px;
-  padding: 0px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;    
-  height: 64px;
-  width:64px;
-  display: inline;
-  float: right;
-} 
-.count-list-item-global-even input[type=tel]{
-  padding: 0;
-  height: 64px;
-  width:64px;
-  position: relative;
-  text-align: center;
-  margin-top: -16px;
-  margin-bottom: 16px;
-  left: 0;
-  outline: none;
-  border: 0px;
-
-  border-color: rgba(0, 0, 0, .50);
-  background-color: white;
-  font-size: 16px;
-  display: inline;
-  float: right;
-}  
-.count-list-item-global-odd input[type=tel]{
-  padding: 0;
-  height: 64px;
-  width:64px;
-  position: relative;
-  text-align: center;
-  margin-top: -16px;
-  margin-bottom: 16px;
-  left: 0;
-  outline: none;
-  border: 0px;
-
-  border-color: rgba(0, 0, 0, .50);
-  background-color: white;
-  font-size: 16px;
-  display: inline;
-  float: right;
-} 
+    float: right;
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 2px;
+  }
+  .count-list-item-global-even h1{
+    font-size: var(--title-size);
+    display: inline;
+    color:var(--color-text-light);   
+  }
+  .count-list-item-global-even button{
+    background-color: var(--color-button-global);
+    border: none;
+    color: white;
+    margin-top: 0px;
+    padding: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;    
+    height: var(--button-height);
+    width:var(--button-width);
+    display: inline;
+    float: right;
+  }  
+  .count-list-item-global-even input[type=tel]{
+    padding: 0;
+    height: var(--button-height);
+    width:var(--button-width);
+    position: relative;
+    text-align: center;    
+    margin-top: 0px;
+    margin-bottom: 6px;
+    left: 0;
+    outline: none;
+    border: 0px;
+    border-color: rgba(0, 0, 0, .50);
+    background-color: white;
+    font-size: 16px;
+    display: inline;
+    float: right;
+  }  

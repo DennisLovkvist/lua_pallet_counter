@@ -235,7 +235,7 @@ class PalletCountingPage extends Component
     render(){
 
         var name = (typeof this.state.customer.name === 'string') ? Common.StringLimitLength(this.state.customer.name,20) : "Not Found";
-
+        var customer_number = this.state.customer.number;
         let departments = ["global","dry","cold","frozen"];        
         var mark_button_style = "count-mark-" + departments[this.state.selected_tab];
         return (
@@ -244,8 +244,10 @@ class PalletCountingPage extends Component
                 <div className="lol">
                     <button onClick={this.ClickHandler.bind(this)}>Back</button>
                     
-                    <h3>{name}</h3>
+                    <h3>{customer_number}</h3>
+                    <p>{name}</p>
                     <h4>{this.state.customer.max_height}</h4>
+                    
                    
                 </div>
                 <Tabs tabs={this.state.departments} 

@@ -28,10 +28,13 @@ class PalletCountingListItem extends Component
     }
     Subtract = () =>
     {
-        this.setState({
-            count: parseInt(this.state.count)-1
-          });
-        this.props.Subtract(this.props.counting.id,this.props.department);
+        if(this.state.count > 0)
+        {
+            this.setState({
+                count: parseInt(this.state.count)-1
+            });
+            this.props.Subtract(this.props.counting.id,this.props.department);
+        }
     }
     Add = () =>
     {

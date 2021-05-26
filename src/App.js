@@ -36,8 +36,8 @@ class App extends Component {
             .then(json => {
 
                 if (json.length > 0) {
-
-                    this.setState({ customer_id: id })
+		    
+	            this.setState({ customer_id: id })
                     this.setState({ page_current: Pages.Counting })
                 }
 
