@@ -11,15 +11,15 @@ class Tab extends Component {
 
         if(this.props.tab.id === 1)
         {
-            return(<div className="count-page-tab-dry"><button onClick={this.ClickHandler.bind(this)}>{this.props.tab.name}</button></div>);
+            return(<div className="count-page-tab-dry"><button onClick={this.ClickHandler.bind(this)}>{this.props.tab.display_name}</button></div>);
         }
         else if(this.props.tab.id === 2)
         {
-            return(<div className="count-page-tab-cold"><button onClick={this.ClickHandler.bind(this)}>{this.props.tab.name}</button></div>);
+            return(<div className="count-page-tab-cold"><button onClick={this.ClickHandler.bind(this)}>{this.props.tab.display_name}</button></div>);
         }
         else
         {
-            return(<div className="count-page-tab-frozen"><button onClick={this.ClickHandler.bind(this)}>{this.props.tab.name}</button></div>);
+            return(<div className="count-page-tab-frozen"><button onClick={this.ClickHandler.bind(this)}>{this.props.tab.display_name}</button></div>);
         }
     }
 

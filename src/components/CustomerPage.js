@@ -77,7 +77,7 @@ console.log(process.env);
             <div>
                 <div className="customer_page_search_bar">
                 <input type="tel" value={this.state.search} onChange={this.OnChangeHandler} />
-                <button onClick={this.ClickHandler.bind(this)}>Count</button>
+                <button onClick={this.ClickHandler.bind(this)}>Räkna</button>
                 </div>
                 <CustomerList
                     customers={this.state.counting_control}

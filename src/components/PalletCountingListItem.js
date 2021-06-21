@@ -12,17 +12,19 @@ class PalletCountingListItem extends Component
         };
       }
 
-    myChangeHandler = (event) => {
+    ChangeTB = (event) => {
 
-        var n = parseInt(event.target.value);
+        var count = parseInt(event.target.value);
 
-        if(!isNaN(n))
+        if(isNaN(count))
         {
-            this.setState({
-                count: n
-            });
+            count = 0;
+        }
 
-            this.props.Modify(this.props.counting.id,this.props.department, this.state.count);
+        if(typeof count == 'number')
+        {
+            this.setState({count:parseInt(count)});
+            this.props.Modify(this.props.counting.id,this.props.department, parseInt(count));
         }
             
     }
@@ -57,7 +59,7 @@ class PalletCountingListItem extends Component
                 <div className={sheet}>
                     <h1>{this.props.counting.pallet_type_name}  </h1>                   
                     <button onClick={this.Add}>+</button>      
-                    <input type="tel" value={this.state.count} onChange={this.myChangeHandler}/>    
+                    <input type="tel" value={this.state.count} onChange={this.ChangeTB}/>    
                     <button onClick={this.Subtract}>-</button>
                     
                  </div>   

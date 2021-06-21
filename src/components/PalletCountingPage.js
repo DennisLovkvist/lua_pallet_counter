@@ -236,13 +236,32 @@ class PalletCountingPage extends Component
 
         var name = (typeof this.state.customer.name === 'string') ? Common.StringLimitLength(this.state.customer.name,20) : "Not Found";
         var customer_number = this.state.customer.number;
-        let departments = ["global","dry","cold","frozen"];        
-        var mark_button_style = "count-mark-" + departments[this.state.selected_tab];
+        let departments_css = ["global","dry","cold","frozen"];        
+        var mark_button_style = "count-mark-" + departments_css[this.state.selected_tab];
+
+        let departments = this.state.departments;
+
+        for(var i = 0; i < departments.length;i++)
+        {
+            if(departments[i].name === "Dry")
+            {
+                departments[i].display_name = "Kolonial";
+            }
+            else if(departments[i].name === "Cold")
+            {
+                departments[i].display_name = "Kylen";
+            }
+            else if(departments[i].name === "Frozen")
+            {
+                departments[i].display_name = "Frysen";
+            }
+        }
+
         return (
 
             <div>
                 <div className="lol">
-                    <button onClick={this.ClickHandler.bind(this)}>Back</button>
+                    <button onClick={this.ClickHandler.bind(this)}>Tillbaka</button>
                     
                     <h3>{customer_number}</h3>
                     <p>{name}</p>
@@ -269,8 +288,8 @@ class PalletCountingPage extends Component
 
                 {!this.DepartmentSubmitted(this.state.selected_tab) ? 
                     
-                    <button onClick={this.Mark.bind(this,this.state.selected_tab)}>Submit</button> :  
-                    <button onClick={this.Mark.bind(this,this.state.selected_tab)}>Submitted</button>
+                    <button onClick={this.Mark.bind(this,this.state.selected_tab)}>Skicka</button> :  
+                    <button onClick={this.Mark.bind(this,this.state.selected_tab)}>Skickad</button>
                 }
                     
                 </div>
@@ -286,14 +305,14 @@ class PalletCountingPage extends Component
                     
                     {!this.DepartmentSubmitted(0) ? 
                     
-                        <button onClick={this.Mark.bind(this,0)}>Submit</button> :                          
-                        <button onClick={this.Mark.bind(this,0)}>Submitted</button>
+                        <button onClick={this.Mark.bind(this,0)}>Skicka</button> :                          
+                        <button onClick={this.Mark.bind(this,0)}>Skickad</button>
                     }
                     
                     
                 </div>
                 <div className="count-footer">
-                    <button onClick={this.Save.bind(this,this.state.customer_id)}>Save</button>
+                    <button onClick={this.Save.bind(this,this.state.customer_id)}>Spara</button>
                     
                 </div>
 
