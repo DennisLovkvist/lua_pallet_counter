@@ -8,7 +8,17 @@ class PalletCountingListItem extends Component
     constructor(props) {
         super(props);
         this.state = {
-          count: props.counting.count
+          count: props.counting.count,
+          translation : {
+            Position: "PPL",
+            Standard: "P",
+            Half: "HP",
+            Skrymme: "S",
+            Gray: "Grå",
+            Wood: "Trä",
+            Blue: "Blå",
+            Red: "Röd",
+          }
         };
       }
 
@@ -24,10 +34,39 @@ class PalletCountingListItem extends Component
         if(typeof count == 'number')
         {
             this.setState({count:parseInt(count)});
-            this.props.Modify(this.props.counting.id,this.props.department, parseInt(count));
+            this.props.Modify(this.props.counting.id,this.props.department, parseInt(count));            
+            this.UpdateCount(parseInt(count));
         }
             
     }
+    UpdateCount = (value) => {
+ 
+        
+        const request_options = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(
+              {
+                  counting_control_id: this.props.counting.counting_control_id,
+                  department: this.props.counting.department_id,
+                  pallet_type: this.props.counting.pallet_type_id,
+                  value: value,
+              })
+          };
+        console.log(request_options);
+    
+          fetch('http://' + process.env.REACT_APP_WEB_SERVER_IP + ':8081/UpdateCountingValue', request_options).then(response => {
+                  
+              if(response.status === 200)
+              {
+                console.log(value);
+                this.setState({count: value});
+              }
+          });
+          
+            
+      }
+    
     Subtract = () =>
     {
         if(this.state.count > 0)
@@ -35,7 +74,8 @@ class PalletCountingListItem extends Component
             this.setState({
                 count: parseInt(this.state.count)-1
             });
-            this.props.Subtract(this.props.counting.id,this.props.department);
+            this.props.Subtract(this.props.counting.id,this.props.department);            
+            this.UpdateCount(this.state.count-1);
         }
     }
     Add = () =>
@@ -44,6 +84,11 @@ class PalletCountingListItem extends Component
             count: parseInt(this.state.count)+1
         });
         this.props.Add(this.props.counting.id,this.props.department);
+        this.UpdateCount(this.state.count+1);
+    }
+    Translate = (input) =>
+    {
+        return this.state.translation[input];
     }
     render()
     {
@@ -57,9 +102,9 @@ class PalletCountingListItem extends Component
             return (
 
                 <div className={sheet}>
-                    <h1>{this.props.counting.pallet_type_name}  </h1>                   
+                    <h1>{this.Translate(this.props.counting.pallet_type_name)}  </h1>                   
                     <button onClick={this.Add}>+</button>      
-                    <input type="tel" value={this.state.count} onChange={this.ChangeTB}/>    
+                    <input type="tel" value={this.props.counting.count} onChange={this.ChangeTB}/>    
                     <button onClick={this.Subtract}>-</button>
                     
                  </div>   

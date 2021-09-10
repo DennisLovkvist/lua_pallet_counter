@@ -43,8 +43,7 @@ class PalletCountingPage extends Component
                     .then(json => {
 
                         if(json.length !== 0)
-                        {         
-                            console.log(json);          
+                        {           
                             this.setState(    
                                 { counting_control: json[0] },    
                             )                  
@@ -109,10 +108,11 @@ class PalletCountingPage extends Component
         {
             this.setState({
                 countings: this.state.countings.map(counting => {
-                    if (counting.id === id) {
+                    if (counting.id === id) 
+                    {
                         counting.count++;
                     }
-
+                    
                     return counting;
                 })
             })
@@ -124,7 +124,8 @@ class PalletCountingPage extends Component
         {
             this.setState({
                 countings: this.state.countings.map(counting => {
-                    if (counting.id === id) {
+                    if (counting.id === id) 
+                    {
                         counting.count = input_value;
                     }
 
@@ -256,7 +257,8 @@ class PalletCountingPage extends Component
                 departments[i].display_name = "Frysen";
             }
         }
-
+ //<button onClick={this.Save.bind(this,this.state.customer_id)}>Spara</button>
+        console.log(this.state.customer);       
         return (
 
             <div>
@@ -312,7 +314,7 @@ class PalletCountingPage extends Component
                     
                 </div>
                 <div className="count-footer">
-                    <button onClick={this.Save.bind(this,this.state.customer_id)}>Spara</button>
+                   
                     
                 </div>
 
