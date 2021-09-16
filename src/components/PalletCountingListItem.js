@@ -8,7 +8,6 @@ class PalletCountingListItem extends Component
     constructor(props) {
         super(props);
         this.state = {
-          count: props.counting.count,
           translation : {
             Position: "PPL",
             Standard: "P",
@@ -59,8 +58,7 @@ class PalletCountingListItem extends Component
                   
               if(response.status === 200)
               {
-                console.log(value);
-                this.setState({count: value});
+
               }
           });
           
@@ -69,22 +67,16 @@ class PalletCountingListItem extends Component
     
     Subtract = () =>
     {
-        if(this.state.count > 0)
+        if(this.props.counting.count > 0)
         {
-            this.setState({
-                count: parseInt(this.state.count)-1
-            });
             this.props.Subtract(this.props.counting.id,this.props.department);            
-            this.UpdateCount(this.state.count-1);
+            this.UpdateCount(this.props.counting.count);
         }
     }
     Add = () =>
     {
-        this.setState({
-            count: parseInt(this.state.count)+1
-        });
         this.props.Add(this.props.counting.id,this.props.department);
-        this.UpdateCount(this.state.count+1);
+        this.UpdateCount(this.props.counting.count);
     }
     Translate = (input) =>
     {
