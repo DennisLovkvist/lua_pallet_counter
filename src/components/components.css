@@ -32,6 +32,7 @@
     --color-count-list-item-global-hover: #474747;
     --color-count-list-item-global-active: #8f8f8f;
 
+    --textbox-width: 64px;
     --button-width: 32px;
     --button-height: 32px;
     --title-size: x-large;
@@ -255,7 +256,7 @@
   .count-list-item-dry-even input[type=tel]{
     padding: 0;
     height: var(--button-height);
-    width:var(--button-width);
+    width:var(--textbox-width);
     position: relative;
     text-align: center;    
     margin-top: 0px;
@@ -369,7 +370,7 @@
   .count-list-item-cold-even input[type=tel]{
     padding: 0;
     height: var(--button-height);
-    width:var(--button-width);
+    width:var(--textbox-width);
     position: relative;
     text-align: center;    
     margin-top: 0px;
@@ -383,6 +384,9 @@
     display: inline;
     float: right;
   }  
+
+
+ 
 
 
 
@@ -417,7 +421,7 @@
   .count-list-item-frozen-even input[type=tel]{
     padding: 0;
     height: var(--button-height);
-    width:var(--button-width);
+    width:var(--textbox-width);
     position: relative;
     text-align: center;    
     margin-top: 0px;
@@ -462,7 +466,75 @@
   .count-list-item-global-even input[type=tel]{
     padding: 0;
     height: var(--button-height);
-    width:var(--button-width);
+    width:var(--textbox-width);
+    position: relative;
+    text-align: center;    
+    margin-top: 0px;
+    margin-bottom: 6px;
+    left: 0;
+    outline: none;
+    border: 0px;
+    border-color: rgba(0, 0, 0, .50);
+    background-color: white;
+    font-size: 16px;
+    display: inline;
+    float: right;
+  }  
+  .count-list-item-global-even input[type=number]{
+    padding: 0;
+    height: var(--button-height);
+    width:var(--textbox-width);
+    position: relative;
+    text-align: center;    
+    margin-top: 0px;
+    margin-bottom: 6px;
+    left: 0;
+    outline: none;
+    border: 0px;
+    border-color: rgba(0, 0, 0, .50);
+    background-color: white;
+    font-size: 16px;
+    display: inline;
+    float: right;
+  }  
+  .count-list-item-dry-even input[type=number]{
+    padding: 0;
+    height: var(--button-height);
+    width:var(--textbox-width);
+    position: relative;
+    text-align: center;    
+    margin-top: 0px;
+    margin-bottom: 6px;
+    left: 0;
+    outline: none;
+    border: 0px;
+    border-color: rgba(0, 0, 0, .50);
+    background-color: white;
+    font-size: 16px;
+    display: inline;
+    float: right;
+  }  
+  .count-list-item-cold-even input[type=number]{
+    padding: 0;
+    height: var(--button-height);
+    width:var(--textbox-width);
+    position: relative;
+    text-align: center;    
+    margin-top: 0px;
+    margin-bottom: 6px;
+    left: 0;
+    outline: none;
+    border: 0px;
+    border-color: rgba(0, 0, 0, .50);
+    background-color: white;
+    font-size: 16px;
+    display: inline;
+    float: right;
+  }    
+  .count-list-item-frozen-even input[type=number]{
+    padding: 0;
+    height: var(--button-height);
+    width:var(--textbox-width);
     position: relative;
     text-align: center;    
     margin-top: 0px;

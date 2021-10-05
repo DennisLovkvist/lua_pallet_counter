@@ -17,24 +17,25 @@ class PalletCountingListItem extends Component
             Wood: "Trä",
             Blue: "Blå",
             Red: "Röd",
-          }
+          },
+          count:this.props.counting.count
         };
       }
 
     ChangeTB = (event) => {
 
-        var count = parseInt(event.target.value);
+        var raw = event.target.value.toString();
+        this.setState({count:raw})
 
-        if(isNaN(count))
-        {
-            count = 0;
-        }
+        var count = parseFloat(event.target.value);
 
-        if(typeof count == 'number')
-        {
-            this.setState({count:parseInt(count)});
-            this.props.Modify(this.props.counting.id,this.props.department, parseInt(count));            
-            this.UpdateCount(parseInt(count));
+        if(!isNaN(count))
+        {  
+            if(typeof count == 'number')
+            {            
+                this.props.Modify(this.props.counting.id,this.props.department, parseFloat(count));            
+                this.UpdateCount(parseFloat(count));
+            }
         }
             
     }
@@ -58,7 +59,7 @@ class PalletCountingListItem extends Component
                   
               if(response.status === 200)
               {
-
+                this.setState({count:this.props.counting.count})
               }
           });
           
@@ -91,12 +92,17 @@ class PalletCountingListItem extends Component
         //For alternating colors
         var sheet = "count-list-item-" + departments[this.props.department] + ((((this.props.department % 2)+id)%2 === 0) ? "-even":"-even");
         
+        var input_type = "tel";
+        if(this.props.counting.pallet_type_id === 1)
+        {
+            input_type = "number";
+        }
             return (
 
                 <div className={sheet}>
                     <h1>{this.Translate(this.props.counting.pallet_type_name)}  </h1>                   
                     <button onClick={this.Add}>+</button>      
-                    <input type="tel" value={this.props.counting.count} onChange={this.ChangeTB}/>    
+                    <input type={input_type} value={this.state.count} onChange={this.ChangeTB}/>    
                     <button onClick={this.Subtract}>-</button>
                     
                  </div>   
