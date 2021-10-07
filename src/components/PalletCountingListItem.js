@@ -29,10 +29,12 @@ class PalletCountingListItem extends Component
 
         var count = parseFloat(event.target.value);
 
+        count = Math.round(count / 0.5) * 0.5;
+
         if(!isNaN(count))
         {  
             if(typeof count == 'number')
-            {            
+            {  
                 this.props.Modify(this.props.counting.id,this.props.department, parseFloat(count));            
                 this.UpdateCount(parseFloat(count));
             }
