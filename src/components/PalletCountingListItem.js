@@ -18,14 +18,17 @@ class PalletCountingListItem extends Component
             Blue: "Blå",
             Red: "Röd",
           },
-          count:this.props.counting.count
+          //count:this.props.counting.count
         };
       }
 
     ChangeTB = (event) => {
 
         var raw = event.target.value.toString();
-        this.setState({count:raw})
+
+        this.props.Modify(this.props.counting.id,this.props.department,raw);
+
+        //this.setState({count:raw})
 
         var count = parseFloat(event.target.value);
 
@@ -35,7 +38,7 @@ class PalletCountingListItem extends Component
         {  
             if(typeof count == 'number')
             {  
-                this.props.Modify(this.props.counting.id,this.props.department, parseFloat(count));            
+                //this.props.Modify(this.props.counting.id,this.props.department, parseFloat(count));            
                 this.UpdateCount(parseFloat(count));
             }
         }
@@ -55,13 +58,13 @@ class PalletCountingListItem extends Component
                   value: value,
               })
           };
-        console.log(request_options);
     
           fetch('http://' + process.env.REACT_APP_WEB_SERVER_IP + ':8081/UpdateCountingValue', request_options).then(response => {
                   
               if(response.status === 200)
               {
-                this.setState({count:this.props.counting.count})
+                this.props.Modify(this.props.counting.id,this.props.department,value);
+                //this.setState({count:this.props.counting.count})
               }
           });
           
@@ -89,10 +92,13 @@ class PalletCountingListItem extends Component
     {
         const {id} = this.props.counting;
 
-        let departments = ["global","dry","cold","frozen"];
+        let departments = ["dry","cold","frozen","global"];
         
         //For alternating colors
-        var sheet = "count-list-item-" + departments[this.props.department] + ((((this.props.department % 2)+id)%2 === 0) ? "-even":"-even");
+
+        var department = departments[this.props.department-1];
+
+        var sheet = "count-list-item-" + department + ((((department % 2)+id)%2 === 0) ? "-even":"-even");
         
         var input_type = "tel";
         if(this.props.counting.pallet_type_id === 1)
@@ -104,7 +110,7 @@ class PalletCountingListItem extends Component
                 <div className={sheet}>
                     <h1>{this.Translate(this.props.counting.pallet_type_name)}  </h1>                   
                     <button onClick={this.Add}>+</button>      
-                    <input type={input_type} value={this.state.count} onChange={this.ChangeTB}/>    
+                    <input type={input_type} value={this.props.counting.count} onChange={this.ChangeTB}/>    
                     <button onClick={this.Subtract}>-</button>
                     
                  </div>   

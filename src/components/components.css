@@ -93,49 +93,8 @@
     height: 64px;
     width:100%;
   }
-  .count-mark-dry button{
-
-    background-color:var(--color-secondary-dry);
-    border: none;
-    color: var(--color-text-light);
-    padding: 0px 0px;
-    margin:0px 0px 0px 0px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px; 
-    font-weight: bold;   
-    height: 48px;
-    width:100%;
-  }
-  .count-mark-cold button{
-
-    background-color:var(--color-secondary-cold);
-    border: none;
-    color: var(--color-text-light);
-    padding: 0px 0px;
-    margin:0px 0px 0px 0px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px; 
-    font-weight: bold;   
-    height: 48px;
-    width:100%;
-  }
-  .count-mark-frozen button{
-
-    background-color:var(--color-secondary-frozen);
-    border: none;
-    color: var(--color-text-light);
-    padding: 0px 0px;
-    margin:0px 0px 0px 0px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px; 
-    font-weight: bold;   
-    height: 48px;
-    width:100%;
-  }
-  .count-mark-global button{
+  
+  .count-mark-active button{
 
     background-color:var(--color-secondary-global);
     border: none;
@@ -149,7 +108,20 @@
     height: 48px;
     width:100%;
   }
+  .count-mark-inactive button{
 
+    background-color:var(--color-secondary-global);
+    border: none;
+    color: var(--color-text-light);
+    padding: 0px 0px;
+    margin:0px 0px 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px; 
+    font-weight: bold;   
+    height: 48px;
+    width:100%;
+  }
   
 
   

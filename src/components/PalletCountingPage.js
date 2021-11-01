@@ -89,7 +89,7 @@ class PalletCountingPage extends Component
 
     Subtract = (id, department) => {
 
-        if(!this.DepartmentSubmitted(department))
+        if(!this.IsSubmitted())
         {
             this.setState({
                 countings: this.state.countings.map(counting => {
@@ -104,7 +104,7 @@ class PalletCountingPage extends Component
     }
     Add = (id, department) => {
 
-        if(!this.DepartmentSubmitted(department))
+        if(!this.IsSubmitted())
         {
             this.setState({
                 countings: this.state.countings.map(counting => {
@@ -120,7 +120,7 @@ class PalletCountingPage extends Component
     }
     Modify = (id, department, input_value) => {
 
-        if(!this.DepartmentSubmitted(department))
+        if(!this.IsSubmitted())
         {
             this.setState({
                 countings: this.state.countings.map(counting => {
@@ -135,102 +135,56 @@ class PalletCountingPage extends Component
             })
         }
     }
-    Mark = (department) => {     
-         
-        const cc = this.state.counting_control;
-        var done = [cc.done_global,cc.done_dry,cc.done_cold,cc.done_frozen];
-        done[department] = !done[department];
-
-        this.setState({
-            counting_control: {
-              ...this.state.counting_control,
-              done_global: done[0],
-              done_dry: done[1],
-              done_cold: done[2],
-              done_frozen: done[3],
-              status_id : (done[0]&&done[1]&&done[2]&&done[3]) ? 4: this.state.counting_control.status_id
-            },
-          });
-
-
-
-    }
-    ChangeTab = (id) => {
-
-        this.setState({ selected_tab: id })
-
-    }
-    Save = (id) => {
-
-        var ids = [];
-        var counts = [];
-
-        for (var i = 0; i < this.state.countings.length; i++) {
-            ids.push(this.state.countings[i].id);
-            counts.push(this.state.countings[i].count);
-        }
-
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(
-                {
-                    ids: ids,
-                    counts: counts
-                })
-        };
-
-        fetch('http://' + process.env.REACT_APP_WEB_SERVER_IP + ':8081/UpdateCountings', requestOptions)
-            .then(res => res.json())
-            .then(json => {
-
-                console.log(json)
-
-            })
+    Mark = () => {           
 
         const request_options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(
                 {
-                    status_id: this.state.counting_control.status_id,
-                    done_dry:this.state.counting_control.done_dry,
-                    done_cold:this.state.counting_control.done_cold,
-                    done_frozen:this.state.counting_control.done_frozen,
-                    done_global:this.state.counting_control.done_global
+                    counting_control_id: this.state.counting_control.id,
+                    status_id: 3,
+                    done_dry: true,
+                    done_cold: true,
+                    done_frozen: true,
+                    done_global: true,
                 })
-        };
+            };      
+            fetch('http://' + process.env.REACT_APP_WEB_SERVER_IP + ':8081/UpdateCountingControlById', request_options).then(response => {
+                    
+                if(response.status === 200)
+                {            
+                    this.setState({
+                        counting_control: {
+                          ...this.state.counting_control,    
+                          status_id: 3,                      
+                          done_dry: true,
+                          done_cold: true,
+                          done_frozen: true,
+                          done_global: true
+                        },
+                      });
+                }
+            });
 
-        fetch('http://' + process.env.REACT_APP_WEB_SERVER_IP + ':8081/UpdateCountingControlById/'+ this.state.counting_control.id, request_options)
-        .then(res => res.json())
-        .then(json => {
-
-            console.log(json)
-
-        })
-
-        this.props.GoToCustomerPage();
-        
     }
+    ChangeTab = (id) => {
+
+        if(id != this.state.selected_tab)
+        {
+            this.setState({ selected_tab: id });
+            
+        }
+
+    }
+    
     ClickHandler = (event) => {
 
         this.props.GoToCustomerPage();
     }
-    DepartmentSubmitted = (tab) => {
+    IsSubmitted = () => {
 
-        switch(tab)
-        {
-            case 0:
-                return this.state.counting_control.done_global;
-            case 1:
-                return this.state.counting_control.done_dry;
-            case 2:
-                return this.state.counting_control.done_cold;
-            case 3:
-                return this.state.counting_control.done_frozen;
-            default:
-                return false;
-        }
+        return this.state.counting_control.status_id > 2;
     }
     
     render(){
@@ -238,7 +192,7 @@ class PalletCountingPage extends Component
         var name = (typeof this.state.customer.name === 'string') ? Common.StringLimitLength(this.state.customer.name,20) : "Not Found";
         var customer_number = this.state.customer.number;
         let departments_css = ["global","dry","cold","frozen"];        
-        var mark_button_style = "count-mark-" + departments_css[this.state.selected_tab];
+        //var mark_button_style = "count-mark-" + departments_css[this.state.selected_tab];
 
         let departments = this.state.departments;
 
@@ -257,8 +211,7 @@ class PalletCountingPage extends Component
                 departments[i].display_name = "Frysen";
             }
         }
- //<button onClick={this.Save.bind(this,this.state.customer_id)}>Spara</button>
-        console.log(this.state.customer);       
+
         return (
 
             <div>
@@ -286,33 +239,27 @@ class PalletCountingPage extends Component
                         Modify={this.Modify}
                         department={this.state.selected_tab}
                     />
-                <div className={mark_button_style}>
-
-                {!this.DepartmentSubmitted(this.state.selected_tab) ? 
-                    
-                    <button onClick={this.Mark.bind(this,this.state.selected_tab)}>Skicka</button> :  
-                    <button onClick={this.Mark.bind(this,this.state.selected_tab)}>Skickad</button>
-                }
-                    
-                </div>
+                
                     <PalletCountingList
                         countings={this.state.countings.slice(12, 16)}
                         Add={this.Add}
                         Subtract={this.Subtract}
                         Modify={this.Modify}
-                        department={0}
+                        department={4}
                     />
                 </div>
-                <div className="count-mark-global">
+                
+                <div className={this.IsSubmitted() ? "count-mark-active":"count-mark-inactive"}>
                     
-                    {!this.DepartmentSubmitted(0) ? 
+                    {!this.IsSubmitted() ? 
                     
-                        <button onClick={this.Mark.bind(this,0)}>Skicka</button> :                          
-                        <button onClick={this.Mark.bind(this,0)}>Skickad</button>
+                        <button onClick={this.Mark.bind(this)}>Klarmarkera</button> :                          
+                        <button onClick={this.Mark.bind(this)}>Klarmarkerad</button>
                     }
                     
                     
                 </div>
+                
                 <div className="count-footer">
                    
                     
