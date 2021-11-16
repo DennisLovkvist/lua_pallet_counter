@@ -27,10 +27,19 @@ class CustomerPage extends Component {
             });
 
         var url_date_string = Common.GetCurrentURLDateString();
-        
+        //Do we need to fetch all, check later for optimization
         fetch('http://' + process.env.REACT_APP_WEB_SERVER_IP + ':8081/GetCountingControlByDateAndStatus/' + url_date_string + '/2')
             .then(res => res.json())
             .then(json => {
+
+                console.log(json);
+                json.sort(function(a,b){
+
+                    var date_a = new Date(a.created_date + " " + a.created_time).getTime();
+                    var date_b = new Date(b.created_date + " " + b.created_time).getTime();
+                    return date_a > date_b ? 1:-1;        
+                  });
+
                 this.setState(
 
                     { counting_control: json },
